@@ -1,0 +1,276 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   AuraHR Design System
+   Design tokens are the single source of truth for color, radius, shadow,
+   and spacing across the product. Every component consumes these variables
+   rather than hard-coded values so the system can be re-themed centrally.
+   ========================================================================== */
+
+:root {
+  /* Base radius scale */
+  --radius: 0.75rem;
+  --radius-sm: calc(var(--radius) - 0.375rem);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.375rem);
+  --radius-2xl: calc(var(--radius) + 0.75rem);
+
+  /* Surfaces */
+  --background: oklch(0.995 0.002 106);
+  --foreground: oklch(0.22 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 260);
+
+  /* Brand: Emerald primary */
+  --primary: oklch(0.517 0.135 162);
+  --primary-foreground: oklch(0.99 0.01 160);
+  --primary-hover: oklch(0.465 0.13 162);
+  --primary-soft: oklch(0.96 0.045 162);
+
+  /* Accent: Slate */
+  --secondary: oklch(0.965 0.006 260);
+  --secondary-foreground: oklch(0.28 0.02 260);
+  --accent: oklch(0.955 0.01 162);
+  --accent-foreground: oklch(0.28 0.05 162);
+  --muted: oklch(0.965 0.006 260);
+  --muted-foreground: oklch(0.5 0.02 260);
+
+  /* Semantic status colors */
+  --success: oklch(0.6 0.16 145);
+  --success-foreground: oklch(0.99 0.01 145);
+  --success-soft: oklch(0.96 0.045 145);
+  --warning: oklch(0.77 0.16 75);
+  --warning-foreground: oklch(0.28 0.05 75);
+  --warning-soft: oklch(0.96 0.06 85);
+  --destructive: oklch(0.577 0.19 27);
+  --destructive-foreground: oklch(0.99 0.01 27);
+  --destructive-soft: oklch(0.96 0.04 25);
+  --info: oklch(0.6 0.13 250);
+  --info-foreground: oklch(0.99 0.01 250);
+  --info-soft: oklch(0.96 0.03 250);
+
+  /* Structural */
+  --border: oklch(0.91 0.008 260);
+  --border-strong: oklch(0.85 0.01 260);
+  --input: oklch(0.91 0.008 260);
+  --ring: oklch(0.517 0.135 162 / 0.45);
+
+  /* Charts */
+  --chart-1: oklch(0.517 0.135 162);
+  --chart-2: oklch(0.66 0.13 220);
+  --chart-3: oklch(0.77 0.16 75);
+  --chart-4: oklch(0.66 0.16 300);
+  --chart-5: oklch(0.6 0.19 27);
+
+  /* Sidebar */
+  --sidebar: oklch(0.16 0.025 258);
+  --sidebar-foreground: oklch(0.87 0.01 250);
+  --sidebar-muted: oklch(0.62 0.02 255);
+  --sidebar-border: oklch(0.26 0.02 258);
+  --sidebar-accent: oklch(0.23 0.03 258);
+  --sidebar-primary: oklch(0.63 0.14 162);
+
+  /* Shadows — soft, low-opacity, slate-tinted for a premium finish */
+  --shadow-color: 258 20% 12%;
+  --shadow-xs: 0 1px 2px hsl(var(--shadow-color) / 0.05);
+  --shadow-sm:
+    0 1px 3px hsl(var(--shadow-color) / 0.06), 0 1px 2px hsl(var(--shadow-color) / 0.04);
+  --shadow-md:
+    0 4px 8px hsl(var(--shadow-color) / 0.06), 0 2px 4px hsl(var(--shadow-color) / 0.05);
+  --shadow-lg:
+    0 12px 24px -6px hsl(var(--shadow-color) / 0.1),
+    0 4px 8px hsl(var(--shadow-color) / 0.05);
+  --shadow-xl: 0 24px 48px -12px hsl(var(--shadow-color) / 0.16);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.dark {
+  --background: oklch(0.16 0.02 258);
+  --foreground: oklch(0.94 0.006 250);
+  --card: oklch(0.19 0.022 258);
+  --card-foreground: oklch(0.94 0.006 250);
+  --popover: oklch(0.19 0.022 258);
+  --popover-foreground: oklch(0.94 0.006 250);
+  --primary: oklch(0.63 0.14 162);
+  --primary-foreground: oklch(0.14 0.02 162);
+  --primary-hover: oklch(0.68 0.14 162);
+  --primary-soft: oklch(0.27 0.04 162);
+  --secondary: oklch(0.24 0.02 258);
+  --secondary-foreground: oklch(0.9 0.006 250);
+  --accent: oklch(0.26 0.03 162);
+  --accent-foreground: oklch(0.88 0.03 162);
+  --muted: oklch(0.24 0.02 258);
+  --muted-foreground: oklch(0.66 0.015 255);
+  --border: oklch(0.3 0.02 258);
+  --border-strong: oklch(0.38 0.02 258);
+  --input: oklch(0.3 0.02 258);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-soft: var(--info-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary: var(--sidebar-primary);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes shimmer {
+    from {
+      background-position: -200% 0;
+    }
+    to {
+      background-position: 200% 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  /* Visible keyboard focus everywhere — WCAG 2.4.7 */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .container-shell {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10;
+  }
+  .section-y {
+    @apply py-20 sm:py-28;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--muted) 0%,
+      color-mix(in oklch, var(--muted), white 35%) 50%,
+      var(--muted) 100%
+    );
+    background-size: 200% 100%;
+    animation: var(--animate-shimmer);
+  }
+}
