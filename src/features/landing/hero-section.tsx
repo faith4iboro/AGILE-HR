@@ -30,7 +30,7 @@ export function HeroSection() {
             Now supporting multi-entity organizations
           </span>
           <h1 className="font-display text-foreground mt-5 max-w-xl text-4xl leading-[1.1] font-medium tracking-tight text-balance sm:text-5xl lg:text-[52px]">
-            Faith HR is the powerful workspace to run your entire workforce.
+            Mayowa HR is the powerful workspace to run your entire workforce.
           </h1>
           <p className="text-muted-foreground mt-5 max-w-lg text-[17px] leading-relaxed text-balance">
             AuraHR brings employee records, attendance, leave, payroll, and recruitment
