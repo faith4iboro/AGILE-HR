@@ -31,7 +31,7 @@ export async function signAccessToken(
 ): Promise<string> {
   return new SignJWT({ ...claims, type: "access" })
     .setProtectedHeader({ alg: ALGORITHM })
-    .setSubject(claims.sub)
+    .setSubject(String(claims.sub))
     .setIssuedAt()
     .setExpirationTime(`${env.JWT_ACCESS_EXPIRES_IN_SECONDS}s`)
     .sign(accessTokenSecret);
@@ -42,7 +42,7 @@ export async function signRefreshToken(
 ): Promise<string> {
   return new SignJWT({ ...claims, type: "refresh" })
     .setProtectedHeader({ alg: ALGORITHM })
-    .setSubject(claims.sub)
+    .setSubject(String(claims.sub))
     .setIssuedAt()
     .setExpirationTime(`${env.JWT_REFRESH_EXPIRES_IN_SECONDS}s`)
     .sign(refreshTokenSecret);
